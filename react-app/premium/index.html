@@ -157,6 +157,12 @@
         #videoOverlay {
             width: 100%;
             height: 100vh;
+            /* Dynamic viewport height so the overlay matches the *visible*
+               screen on mobile while the browser URL bar is shown. 100vh is
+               the large viewport (taller than what's visible), which pushed the
+               bottom-anchored Google Play badge off-screen. dvh falls back to
+               the 100vh line above on browsers without support. */
+            height: 100dvh;
             position: relative;
             background: linear-gradient(135deg, #0a0e1a 0%, #1a0a2e 25%, #0d1b2a 50%, #16242f 75%, #0a0e1a 100%);
             background-size: 400% 400%;
@@ -227,7 +233,9 @@
 
         .playstore-wrap {
             position: absolute;
-            bottom: 30px;
+            /* Add the bottom safe-area inset so the badge clears the home
+               indicator / gesture bar on notched phones instead of being cut. */
+            bottom: calc(30px + env(safe-area-inset-bottom, 0px));
             left: 50%;
             transform: translateX(-50%);
             z-index: 10;
