@@ -1,0 +1,111 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+out/
+
+# Environment variables / secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE / Editor
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+.idea/
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# Cache
+.cache/
+.parcel-cache/
+.eslintcache
+
+# Coverage
+coverage/
+
+# Vite
+.vite/
+
+# TypeScript
+*.tsbuildinfo
+
+# Local configuration
+*.local
+
+# Backup files
+*.bak
+*.backup
+
+# Secrets / keys
+*.pem
+*.key
+*.crt
+
+# Firebase
+.firebase/
+
+# Vercel
+.vercel/
+
+# Netlify
+.netlify/
+
+# Legacy static clone — superseded by react-app/src/raw
+/site/
+
+# Frozen backups (intentionally kept on disk, out of git)
+*.bak
+
+# One-off migration scripts (already applied, kept for reference only)
+/build_search.py
+/de_localize.js
+/fix_avatars.py
+/fix_incontent_ad_slot.py
+/fix_mojibake.py
+/fix_premium.py
+/inject_cloak.py
+/localize_assets.js
+/migrate_urls.py
+/offline_clone.py
+/premium_ad_mode.py
+/relax_cloak_ua_only.py
+/remap_thumbs.js
+/remove_cloak.py
+/rename_urls.py
+/restore_ad_scripts.py
+/restore_cloak_param_gate.py
+/rewrite_content.py
+/strip_ads.py
+/test_cloak.py
+/test_useragents.js
+/report.csv
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Scratch
+/pages/

@@ -1,0 +1,89 @@
+
+    <div id="videoOverlay">
+        <!-- [COMMENTED OUT] Article rotation link disabled - click only plays video
+        <a href="/a-complete-handbook-to-federal-state-and-local-government-jobs-in-the-usa/"
+            class="play-next-overlay-link" data-next-article="true"
+            style="position:absolute;top:0;left:0;right:0;bottom:0;z-index:1;"></a>
+        -->
+
+        <video id="premiumVideo" playsinline preload="metadata" onclick="togglePlay()" style="z-index:0;cursor:pointer;"></video>
+
+        <button class="play-pause-btn" id="playPauseBtn" onclick="togglePlay()">
+            <svg id="playIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="6,3 22,12 6,21"/>
+            </svg>
+            <svg id="pauseIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+                <rect x="5" y="3" width="4" height="18"/>
+                <rect x="15" y="3" width="4" height="18"/>
+            </svg>
+        </button>
+
+        <div class="playstore-wrap">
+            <a href="https://play.google.com/store"
+                target="_blank" rel="noopener"
+                class="playstore-btn"
+                aria-label="Get it on Google Play">
+                <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                    alt="Get it on Google Play">
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // ===== VIDEO API CONFIG =====
+        // When your API is ready, fill in the URL below.
+        // Expected API response format: { "video_url": "https://..." }
+        // Change "video_url" to match your API's actual field name.
+        var VIDEO_API_URL = ''; // e.g. 'https://yourdomain.com/api/get-video'
+        var VIDEO_FIELD = 'video_url'; // the key in API response that has the video link
+        var FALLBACK_VIDEO = '/assets/sample_video.mp4'; // used when API is not set
+        // ===============================
+
+        function loadVideo() {
+            var video = document.getElementById('premiumVideo');
+            if (!VIDEO_API_URL) {
+                // No API configured yet — use local fallback
+                video.src = FALLBACK_VIDEO;
+                return;
+            }
+            fetch(VIDEO_API_URL)
+                .then(function (res) { return res.json(); })
+                .then(function (data) {
+                    var url = data[VIDEO_FIELD];
+                    if (url) {
+                        video.src = url;
+                    } else {
+                        video.src = FALLBACK_VIDEO;
+                    }
+                })
+                .catch(function () {
+                    video.src = FALLBACK_VIDEO;
+                });
+        }
+
+        function togglePlay() {
+            var video = document.getElementById('premiumVideo');
+            var btn = document.getElementById('playPauseBtn');
+            var playIcon = document.getElementById('playIcon');
+            var pauseIcon = document.getElementById('pauseIcon');
+            if (video.paused) {
+                video.play();
+                btn.classList.add('hidden');
+            } else {
+                video.pause();
+                btn.classList.remove('hidden');
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+            }
+        }
+
+        document.getElementById('premiumVideo').addEventListener('ended', function () {
+            var btn = document.getElementById('playPauseBtn');
+            btn.classList.remove('hidden');
+            document.getElementById('playIcon').style.display = 'block';
+            document.getElementById('pauseIcon').style.display = 'none';
+        });
+
+        // Load video on page open
+        loadVideo();
+    </script>

@@ -1,0 +1,408 @@
+
+  <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/assets/*","/assets/*","/assets/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+  <div data-nosnippet="true" id="wpconsent-root"
+    style="--wpconsent-z-index: 900000; --wpconsent-background: #04194e; --wpconsent-text: #ffffff; --wpconsent-outline-color: rgba(255, 255, 255, 0.2); --wpconsent-accept-bg: #ffcd2a; --wpconsent-cancel-bg: #ffffff; --wpconsent-preferences-bg: #ffffff; --wpconsent-accept-color: #000000; --wpconsent-cancel-color: #000000; --wpconsent-preferences-color: #000000; --wpconsent-font-size: 16px;">
+    <div id="wpconsent-container" style="display: none;"></div><template id="wpconsent-template">
+      <div aria-labelledby="wpconsent-banner-title"
+        class="wpconsent-banner-holder wpconsent-banner-floating wpconsent-banner-floating-left-bottom"
+        id="wpconsent-banner-holder" role="dialog" tabindex="-1">
+        <div class="wpconsent-banner" part="wpconsent-banner">
+          <div class="wpconsent-banner-body" part="wpconsent-banner-body">
+            <h2 class="screen-reader-text" id="wpconsent-banner-title">Cookie Consent</h2>
+            <div class="wpconsent-banner-message" tabindex="0">
+              <p>By using our site, you consent to cookies.</p>
+            </div>
+          </div>
+          <div
+            class="wpconsent-banner-footer wpconsent-button-size-small wpconsent-button-corner-slightly-rounded wpconsent-button-type-filled"
+            part="wpconsent-banner-footer"><button
+              class="wpconsent-preferences-cookies wpconsent-banner-button wpconsent-preferences-all wpconsent-button-disabled"
+              data-disabled="true" id="wpconsent-preferences-all" part="wpconsent-button-preferences"
+              type="button">Preferences</button><button
+              class="wpconsent-cancel-cookies wpconsent-banner-button wpconsent-cancel-all wpconsent-button-disabled"
+              data-disabled="true" id="wpconsent-cancel-all" part="wpconsent-button-cancel"
+              type="button">Reject</button><button
+              class="wpconsent-accept-cookies wpconsent-banner-button wpconsent-accept-all" id="wpconsent-accept-all"
+              part="wpconsent-button-accept" type="button">Accept All</button></div>
+        </div>
+      </div>
+      <div aria-labelledby="wpconsent-preferences-title" aria-modal="true" class="wpconsent-preferences-modal"
+        id="wpconsent-preferences-modal" part="wpconsent-preferences-modal" role="dialog" style="display:none;"
+        tabindex="-1">
+        <div class="wpconsent-preferences-content" part="wpconsent-preferences-content">
+          <div class="wpconsent-preferences-header" part="wpconsent-preferences-header">
+            <h2 id="wpconsent-preferences-title" part="wpconsent-preferences-title" tabindex="0">Cookie Preferences</h2>
+            <div class="wpconsent-preferences-header-right"><button aria-label="Close"
+                class="wpconsent-preferences-header-close" id="wpconsent-preferences-close"
+                part="wpconsent-preferences-close">×</button></div>
+          </div>
+          <div class="wpconsent-preferences-body">
+            <div class="wpconsent_preferences_panel_description" part="wpconsent-preferences-description">
+              <p>Manage your cookie preferences below:</p>
+            </div>
+            <div class="wpconsent-preference-cookies wpconsent-preferences-accordion"
+              part="wpconsent-preferences-accordion">
+              <div
+                class="wpconsent-preferences-accordion-item wpconsent-cookie-category wpconsent-cookie-category-essential"
+                part="wpconsent-accordion-item wpconsent-category-essential">
+                <div class="wpconsent-preferences-accordion-header" part="wpconsent-accordion-header">
+                  <div class="wpconsent-cookie-category-text"><button aria-expanded="false"
+                      class="wpconsent-preferences-accordion-toggle" part="wpconsent-accordion-toggle"><span
+                        aria-hidden="true" class="wpconsent-preferences-accordion-arrow"></span><span
+                        class="screen-reader-text">Toggle Essential</span></button><label
+                      for="cookie-category-essential">Essential</label></div>
+                  <div class="wpconsent-cookie-category-checkbox"><label
+                      class="wpconsent-preferences-checkbox-toggle wpconsent-preferences-checkbox-toggle-disabled"
+                      part="wpconsent-checkbox-toggle wpconsent-checkbox-toggle-disabled"><input checked="" disabled=""
+                        id="cookie-category-essential" type="checkbox" /><span
+                        class="wpconsent-preferences-checkbox-toggle-slider"></span></label></div>
+                </div>
+                <div class="wpconsent-preferences-accordion-content" part="wpconsent-accordion-content">
+                  <p class="wpconsent-category-description" tabindex="0">Essential cookies enable basic functions and
+                    are necessary for the proper function of the website.</p>
+                  <div class="wpconsent-preferences-cookies-list" part="wpconsent-cookies-list">
+                    <div class="wpconsent-preferences-list-header" part="wpconsent-cookies-list-header">
+                      <div class="cookie-name">Name</div>
+                      <div class="cookie-desc">Description</div>
+                      <div class="cookie-duration">Duration</div>
+                    </div>
+                    <div class="wpconsent-preferences-list-item" data-cookie-id="12" part="wpconsent-cookies-list-item">
+                      <div class="cookie-name">Cookie Preferences</div>
+                      <div class="cookie-desc">This cookie is used to store the user's cookie consent preferences.</div>
+                      <div class="cookie-duration">30 days</div>
+                    </div>
+                  </div>
+                  <div class="wpconsent-preferences-accordion-item wpconsent-cookie-service"
+                    part="wpconsent-accordion-item wpconsent-service-comments">
+                    <div class="wpconsent-preferences-accordion-header" part="wpconsent-accordion-header">
+                      <div class="wpconsent-cookie-category-text"><button aria-expanded="false"
+                          class="wpconsent-preferences-accordion-toggle" part="wpconsent-accordion-toggle"><span
+                            aria-hidden="true" class="wpconsent-preferences-accordion-arrow"></span><span
+                            class="screen-reader-text">Toggle Comments</span></button><label>Comments</label></div>
+                      <div class="wpconsent-cookie-category-checkbox"></div>
+                    </div>
+                    <div class="wpconsent-preferences-accordion-content" part="wpconsent-accordion-content">
+                      <p class="wpconsent-service-description" tabindex="0">These cookies are needed for adding comments
+                        on this website.</p>
+                      <div class="wpconsent-preferences-cookies-list" part="wpconsent-cookies-list">
+                        <div class="wpconsent-preferences-list-header" part="wpconsent-cookies-list-header">
+                          <div class="cookie-name">Name</div>
+                          <div class="cookie-desc">Description</div>
+                          <div class="cookie-duration">Duration</div>
+                        </div>
+                        <div class="wpconsent-preferences-list-item" data-cookie-id="13"
+                          part="wpconsent-cookies-list-item">
+                          <div class="cookie-name">comment_author</div>
+                          <div class="cookie-desc">Used to track the user across multiple sessions.</div>
+                          <div class="cookie-duration">Session</div>
+                        </div>
+                        <div class="wpconsent-preferences-list-item" data-cookie-id="14"
+                          part="wpconsent-cookies-list-item">
+                          <div class="cookie-name">comment_author_email</div>
+                          <div class="cookie-desc">Used to track the user across multiple sessions.</div>
+                          <div class="cookie-duration">Session</div>
+                        </div>
+                        <div class="wpconsent-preferences-list-item" data-cookie-id="15"
+                          part="wpconsent-cookies-list-item">
+                          <div class="cookie-name">comment_author_url</div>
+                          <div class="cookie-desc">Used to track the user across multiple sessions.</div>
+                          <div class="cookie-duration">Session</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="wpconsent-preferences-accordion-item wpconsent-cookie-category"
+                part="wpconsent-accordion-item wpconsent-cookie-policy-item">
+                <div class="wpconsent-preferences-accordion-header" part="wpconsent-accordion-header">
+                  <div class="wpconsent-cookie-category-text"><button aria-expanded="false"
+                      class="wpconsent-preferences-accordion-toggle" part="wpconsent-accordion-toggle"><span
+                        aria-hidden="true" class="wpconsent-preferences-accordion-arrow"></span><span
+                        class="screen-reader-text">Toggle Cookie Policy</span></button><label
+                      class="wpconsent-cookie-policy-title">Cookie Policy</label></div>
+                </div>
+                <div class="wpconsent-preferences-accordion-content" part="wpconsent-accordion-content">
+                  <p class="wpconsent-cookie-policy-text" tabindex="0">You can find more information in our <a
+                      href="/cookie-policy/">Cookie Policy</a> and <a href="/privacy-policy/">Privacy Policy</a>.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="wpconsent-preferences-actions" part="wpconsent-preferences-actions">
+            <div
+              class="wpconsent-preferences-buttons wpconsent-button-size-small wpconsent-button-corner-slightly-rounded wpconsent-button-type-filled"
+              part="wpconsent-preferences-buttons">
+              <div class="wpconsent-preferences-buttons-left" part="wpconsent-preferences-buttons-left"><button
+                  class="wpconsent-accept-all wpconsent-banner-button" part="wpconsent-preferences-accept-button">Accept
+                  All</button><button class="wpconsent-close-preferences wpconsent-banner-button"
+                  part="wpconsent-preferences-cancel-button">Close</button></div><button
+                class="wpconsent-save-preferences wpconsent-banner-button" part="wpconsent-preferences-save-button">Save
+                and Close</button>
+            </div>
+          </div>
+        </div>
+      </div><button aria-label="Cookie Preferences" class="wpconsent-consent-floating-button"
+        id="wpconsent-consent-floating" part="wpconsent-settings-button"
+        style="background-color: #04194e; color: #ffffff;"><svg class="wpconsent-icon wpconsent-icon-preferences"
+          height="24" viewbox="0 -960 960 960" width="24" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="m370-80-16-128q-13-5-24.5-12T307-235l-119 50L78-375l103-78q-1-7-1-13.5v-27q0-6.5 1-13.5L78-585l110-190 119 50q11-8 23-15t24-12l16-128h220l16 128q13 5 24.5 12t22.5 15l119-50 110 190-103 78q1 7 1 13.5v27q0 6.5-2 13.5l103 78-110 190-118-50q-11 8-23 15t-24 12L590-80H370Zm70-80h79l14-106q31-8 57.5-23.5T639-327l99 41 39-68-86-65q5-14 7-29.5t2-31.5q0-16-2-31.5t-7-29.5l86-65-39-68-99 42q-22-23-48.5-38.5T533-694l-13-106h-79l-14 106q-31 8-57.5 23.5T321-633l-99-41-39 68 86 64q-5 15-7 30t-2 32q0 16 2 31t7 30l-86 65 39 68 99-42q22 23 48.5 38.5T427-266l13 106Zm42-180q58 0 99-41t41-99q0-58-41-99t-99-41q-59 0-99.5 41T342-480q0 58 40.5 99t99.5 41Zm-2-140Z"
+            fill="#ffffff"></path>
+        </svg></button>
+    </template>
+  </div>
+  <script id="wpconsent-frontend-js-js-extra">
+    var wpconsent = { "consent_duration": "30", "css_url": "/_assets/zevixa.b-cdn.net/assets/wp-content/plugins/wpconsent-cookies-banner-privacy-suite/build/09439e2e9e762144_frontend.css.css", "css_version": "cec95db78f836c4ebc39", "default_allow": "", "consent_type": "optin", "manual_toggle_services": "", "slugs": ["essential", "statistics", "marketing"], "enable_consent_banner": "1", "enable_script_blocking": "1", "enable_content_blocking": "0", "enable_consent_floating": "", "enable_shared_consent": "", "cookie_domain": "", "accept_button_enabled": "1", "cancel_button_enabled": "", "preferences_button_enabled": "", "respect_gpc": "", "gpc_toast_message": "GPC Signal Honored", "gpc_toast_duration": "10000", "gpc_toast_enabled": "1" };
+    //# sourceURL=wpconsent-frontend-js-js-extra
+  </script>
+  <script id="wpconsent-frontend-js-js"
+    src="/_assets/zevixa.b-cdn.net/assets/js/89541d170cc68071_frontend.js.js"></script>
+  <script id="ct-scripts-js-extra">
+    var ct_localizations = { "ajax_url": "", "public_url": "/assets/wp-content/themes/blocksy/static/bundle/", "rest_url": "", "search_url": "https://zevixa.site/search/QUERY_STRING/", "show_more_text": "Show more", "more_text": "More", "search_live_results": "Search results", "search_live_no_results": "No results", "search_live_results_closed": "Search results closed.", "search_live_no_result": "No results", "search_live_one_result": "You got %s result. Please press Tab to select it.", "search_live_many_results": "You got %s results. Please press Tab to select one.", "search_live_stock_status_texts": { "instock": "In stock", "outofstock": "Out of stock" }, "clipboard_copied": "Copied!", "clipboard_failed": "Failed to Copy", "expand_submenu": "Expand dropdown menu", "collapse_submenu": "Collapse dropdown menu", "dynamic_js_chunks": [], "dynamic_styles": { "lazy_load": "/_assets/zevixa.b-cdn.net/assets/wp-content/themes/blocksy/static/bundle/52bb3edf1f9f83ba_non-critical-styles.min.css.css", "search_lazy": "/_assets/zevixa.b-cdn.net/assets/wp-content/themes/blocksy/static/bundle/ebb61d93edd76ff4_non-critical-search-styles.min.css.css", "back_to_top": "/_assets/zevixa.b-cdn.net/assets/wp-content/themes/blocksy/static/bundle/ffb0127023a0413f_back-to-top.min.css.css" }, "dynamic_styles_selectors": [{ "selector": ".ct-header-cart, #woo-cart-panel", "url": "/_assets/zevixa.b-cdn.net/assets/wp-content/themes/blocksy/static/bundle/0f79b95141633f83_cart-header-element-lazy.min.css.css" }, { "selector": ".flexy", "url": "/_assets/zevixa.b-cdn.net/assets/wp-content/themes/blocksy/static/bundle/0b9cb8faaf375766_flexy.min.css.css" }, { "selector": ".ct-pagination", "url": "/_assets/zevixa.b-cdn.net/assets/wp-content/themes/blocksy/static/bundle/120030a165988c47_pagination.min.css.css" }] };
+    //# sourceURL=ct-scripts-js-extra
+  </script>
+  <script id="ct-scripts-js" src="/_assets/zevixa.b-cdn.net/assets/js/f37e181a3d840700_main.js.js"></script>
+  <script async="" data-wp-strategy="async" fetchpriority="low" id="comment-reply-js"
+    src="/_assets/zevixa.b-cdn.net/assets/js/76ec5ad7571f0238_comment-reply.min.js.js"></script>
+
+
+  <style>
+    /* FLOATING AD CONTAINER */
+    #floatingAdContainer {
+      position: fixed;
+      top: 20px;
+      right: -320px;
+      width: 320px;
+      height: 260px;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      transition: right 0.5s ease;
+    }
+
+    /* ACTIVE (VISIBLE) */
+    #floatingAdContainer.active {
+      right: 10px;
+    }
+
+    /* AD BOX */
+    #floatingAdContent {
+      width: 300px;
+      height: 250px;
+      background: #fff;
+      border-radius: 10px 0 0 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* TOGGLE BUTTON */
+    #floatingAdToggle {
+      position: absolute;
+      left: -30px;
+      width: 30px;
+      height: 30px;
+      background: #000;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 50%;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    /* ICONS */
+    #floatingAdToggle::before {
+      content: "\203A";
+    }
+
+    #floatingAdContainer.active #floatingAdToggle::before {
+      content: "\2715";
+    }
+
+    #floatingAdContainer.active #floatingAdToggle {
+      transform: rotate(180deg);
+    }
+
+    /* MOBILE OPTIMIZATION */
+    @media (max-width: 768px) {
+      #floatingAdContainer {
+        top: 20px;
+        bottom: 10px;
+        right: -320px;
+      }
+
+      #floatingAdContainer.active {
+        right: 10px;
+      }
+    }
+  </style>
+
+
+
+  <style>
+    #bottom-ad-container {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      z-index: 9999;
+      background: #fff;
+      max-height: 300px;
+      overflow: hidden;
+      padding-bottom: env(safe-area-inset-bottom);
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    /* Collapsed state */
+    #bottom-ad-container.collapsed {
+      max-height: 0px;
+    }
+
+    #div-gpt-ad-bottom {
+      margin: 0 auto;
+    }
+
+    /* Arrow/Toggle Button — hidden initially, shown after delay */
+    #toggle-ad {
+      position: absolute;
+      right: 8px;
+      top: 8px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      border: none;
+      font-size: 16px;
+      padding: 4px 8px;
+      cursor: pointer;
+      z-index: 10000;
+      border-radius: 4px;
+      display: none;
+      transform: rotate(-90deg);
+      /* expanded → pointing down */
+      transition: transform 0.3s ease, background 0.2s ease;
+    }
+
+    #toggle-ad:hover {
+      background: #333;
+    }
+
+    /* Rotate when collapsed */
+    #bottom-ad-container.collapsed #toggle-ad {
+      transform: rotate(90deg);
+    }
+  </style>
+
+  <style>
+    /* ===========================
+    Floating Ad Container
+    =========================== */
+    #outstream-ad-container {
+      position: fixed;
+      left: 10px;
+      top: 320px;
+      width: 300px;
+      max-width: 90vw;
+      height: 250px;
+      background: #000;
+      z-index: 99999;
+      border-radius: 10px;
+      overflow: hidden;
+      display: none;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    }
+
+    /* ===========================
+    Advertisement Label
+    =========================== */
+    .ad-label {
+      position: absolute;
+      top: 6px;
+      left: 8px;
+      font-size: 10px;
+      font-family: sans-serif;
+      color: rgba(255, 255, 255, 0.85);
+      background: rgba(0, 0, 0, 0.45);
+      padding: 2px 6px;
+      border-radius: 3px;
+      z-index: 20;
+      pointer-events: none;
+    }
+
+    /* ===========================
+    Close Button — base
+    =========================== */
+    #ad-close {
+      position: absolute;
+      top: 5px;
+      right: 8px;
+      font-size: 13px;
+      font-family: sans-serif;
+      font-weight: 700;
+      min-width: 24px;
+      text-align: center;
+      line-height: 20px;
+      padding: 2px 7px;
+      border-radius: 4px;
+      z-index: 21;
+      user-select: none;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease, background 0.2s ease;
+    }
+
+    /* Counting state — visible but NOT clickable */
+    #ad-close.counting {
+      opacity: 1;
+      pointer-events: none;
+      cursor: default;
+      background: rgba(180, 180, 180, 0.85);
+      color: #444;
+    }
+
+    /* Ready state — visible and clickable */
+    #ad-close.ready {
+      opacity: 1;
+      pointer-events: auto;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.92);
+      color: #000;
+    }
+
+    /* Desktop: show close on hover only when ready */
+    #outstream-ad-container:hover #ad-close.ready {
+      opacity: 1;
+    }
+
+    /* ===========================
+    Ad Slot
+    =========================== */
+    #ad-slot {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ===========================
+    Mobile Positioning
+    =========================== */
+    @media (max-width: 480px) {
+      #outstream-ad-container {
+        left: 50%;
+        transform: translateX(-50%);
+        top: auto;
+        bottom: 20px;
+        width: 320px;
+      }
+    }
+  </style>
+
+  <script src="/_assets/zevixa.b-cdn.net/assets/js/055b9d13873a5cf7_ima3.js.js"></script>
+
+  <script src="/assets/search.js" defer></script>

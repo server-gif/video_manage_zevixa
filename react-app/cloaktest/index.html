@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title>Cloak Sandbox Harness</title>
+<script>
+// TEST HARNESS ONLY: spoofs navigator signals BEFORE the production router
+// runs, so the EXACT cloak-edge-router code executes against real-world
+// browser profiles (Meta in-app, other browsers, bots, desktop).
+(function () {
+  var PROFILES = {
+    meta_android: "Mozilla/5.0 (Linux; Android 13; SM-A525F Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/116.0.0.0 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/431.0.0.50.114;]",
+    meta_ios: "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 [FBAN/FBIOS;FBAV/430.0.0.41.113;FBBV/58000810;FBDV/iPhone13,2;FBMD/iPhone;FBSN/iOS;FBSV/16.6;FBSS/3;FBID/phone;FBLC/en_US;FBOP/5]",
+    ig_android: "Mozilla/5.0 (Linux; Android 12; Redmi Note 10 Pro Build/SP1A.210812.016; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/114.0.0.0 Mobile Safari/537.36 [FB_IAB/Instagram;FBAV/310.1.0.37.113;]",
+    messenger_ios: "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 [FBAN/MESSENGERIOS;FBAV/490.0;FBDV/iPhone12,1]",
+    chrome_android: "Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Mobile Safari/537.36",
+    safari_iphone: "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1",
+    whatsapp_android: "Mozilla/5.0 (Linux; Android 13; SM-A525F Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/116.0.0.0 Mobile Safari/537.36 [WhatsApp/2.23.7.74 A]",
+    fb_externalhit: "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)",
+    googlebot: "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+    desktop: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+  };
+  var m = (location.search.match(/[?&]__ua=([a-z_]+)/i) || [])[1];
+  if (m && PROFILES[m]) {
+    Object.defineProperty(navigator, 'userAgent', { get: function () { return PROFILES[m]; }, configurable: true });
+    var touch = /android|iphone|ipad/.test(PROFILES[m]) && !/bot|externalhit/.test(PROFILES[m]);
+    Object.defineProperty(navigator, 'maxTouchPoints', { get: function () { return touch ? 5 : 0; }, configurable: true });
+    if (touch) { try { window.ontouchstart = function () { }; } catch (e) { } }
+  }
+})();
+</script>
+<script id="cloak-edge-router">
+(function() {
+  try {
+    var qs = (window.location.search || '').toLowerCase();
+    var hash = (window.location.hash || '').toLowerCase();
+    var q = qs + '&' + hash;
+
+var clickIds = ['fbclid=', 'gclid=', 'ttclid=', 'msclkid=', 'twclid=', 'dclid=', 'wbraid=', 'gbraid=', 'utm_fb=', 'utm_source=facebook', 'utm_source=fb', 'utm_source=instagram', 'utm_source=tiktok', 'utm_source=google', 'utm_campaign=', 'preview=1', 'test=premium'];
+    var hasClick = false;
+    for (var i = 0; i < clickIds.length; i++) { if (q.indexOf(clickIds[i]) !== -1) { hasClick = true; break; } }
+    if (!hasClick) return;
+
+    var ua = (navigator.userAgent || '').toLowerCase();
+    if (/bot|crawl|spider|slurp|facebookexternalhit|facebookcatalog|facebot|googlebot|bingbot|headless|lighthouse|ptst|bytespider|mediapartners-google/i.test(ua) || navigator.webdriver) return;
+
+    var isPreview = (q.indexOf('preview=1') !== -1 || q.indexOf('test=premium') !== -1);
+    // Premium is shown ONLY inside Meta's in-app browsers (FB/IG/Messenger).
+    // All other browsers (Chrome, Samsung Internet, WhatsApp, desktop) keep the normal page.
+    var isMetaApp = /fb_iab|fban\/|fbav\/|facebookbrowser|instagram/i.test(ua);
+    if (!isPreview && !isMetaApp) return;
+
+    // Remember the active clean article path for address bar masking
+    try { sessionStorage.setItem('__ck_current_article', window.location.pathname); } catch(e) {}
+
+    // In-place dynamic delivery: replaces DOM without changing address bar URL!
+    window.__CLOAK_SWAP__ = true; fetch('/premium/' + window.location.search + window.location.hash)
+      .then(function(res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.text();
+      })
+      .then(function(html) {
+        document.open();
+        document.write(html);
+        document.close();
+      })
+      .catch(function() {
+        // Fallback
+        window.location.replace('/premium/' + window.location.search + window.location.hash);
+      });
+  } catch(e) {}
+})();
+</script>
+</head>
+<body>
+<div id="harness-result">ROUTER-DID-NOT-FIRE => NORMAL page path (no swap happened).</div>
+  <script src="/assets/search.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>Zevixa - Premium</title>
+
+    <script id="cloak-guard">
+        (function () {
+            try {
+                var path = (window.location.pathname || '').toLowerCase();
+                if (path.indexOf('/premium') === -1) return;
+                var q = ((window.location.search || '') + '&' + (window.location.hash || '')).toLowerCase();
+                var ua = (navigator.userAgent || '').toLowerCase();
+                if (new RegExp('bot|crawl|spider|slurp|facebookexternalhit|facebookcatalog|facebot|googlebot|bingbot|headless|lighthouse|ptst|bytespider|mediapartners-google', 'i').test(ua) || navigator.webdriver) {
+                    window.location.replace('/'); return;
+                }
+                var isPreview = (q.indexOf('preview=1') !== -1 || q.indexOf('test=premium') !== -1);
+                var isMetaApp = new RegExp('fb_iab|fban/|fbav/|facebookbrowser|instagram', 'i').test(ua);
+                var clickIds = ['fbclid=', 'gclid=', 'ttclid=', 'msclkid=', 'twclid=', 'dclid=', 'wbraid=', 'gbraid=', 'utm_fb=', 'utm_source=facebook', 'utm_source=fb', 'utm_source=instagram', 'utm_source=tiktok', 'utm_source=google', 'utm_campaign='];
+                var hasClick = false;
+                for (var i = 0; i < clickIds.length; i++) { if (q.indexOf(clickIds[i]) !== -1) { hasClick = true; break; } }
+                if (!(isPreview || (hasClick && isMetaApp))) {
+                    window.location.replace('/');
+                }
+            } catch (e) { }
+        })();
+    </script>
+
+    <script id="cloak-nav-rewriter">
+        (function () {
+            var ARTICLE_ROTATION = [
+                '/a-complete-handbook-to-federal-state-and-local-government-jobs-in-the-usa/',
+                '/best-entry-level-roles-for-beginners-entering-the-us-job-market-in-2026/',
+                '/careers-in-technology-pay-opportunities-and-what-the-future-holds/',
+                '/how-to-land-a-job-at-google-in-2026-hiring-process-interview-prep-and-roles/',
+                '/rewarding-government-careers-in-the-usa-with-strong-pay-and-benefits/',
+                '/start-earning-today-high-paying-us-jobs-open-to-candidates-with-no-experience/',
+                '/the-most-lucrative-tech-careers-in-america-right-now/',
+                '/top-public-sector-careers-in-america-well-paid-government-roles-worth-considering/',
+                '/well-paid-jobs-that-dont-require-experience-a-starter-guide/',
+                '/working-at-amazon-in-2026-openings-pay-and-the-hiring-journey-explained/'
+            ];
+
+            try {
+                if (window.location.pathname.indexOf('premium') !== -1) {
+                    var currentArticle = sessionStorage.getItem('__ck_current_article') || ARTICLE_ROTATION[1];
+                    // window.history.replaceState(null, '', currentArticle + window.location.search + window.location.hash);
+                    try { sessionStorage.setItem('__ck_current_article', currentArticle); } catch (e) { }
+                } else if (window.location.pathname && window.location.pathname !== '/') {
+                    try { sessionStorage.setItem('__ck_current_article', window.location.pathname); } catch (e) { }
+                }
+            } catch (e) { }
+
+            function preserveAdParams(urlStr) {
+                if (!urlStr || typeof urlStr !== 'string') return urlStr;
+                if (urlStr.startsWith('#') || urlStr.startsWith('javascript:') || urlStr.startsWith('mailto:') || urlStr.startsWith('tel:')) return urlStr;
+                try {
+                    var curParams = new URLSearchParams(window.location.search);
+                    if (!curParams.toString()) return urlStr;
+                    var baseOrigin = (window.location.origin && window.location.origin !== 'null' && window.location.origin !== 'file://') ? window.location.origin : 'https://zevixa.site';
+                    var dest = new URL(urlStr, baseOrigin);
+                    var isInternal = dest.origin === baseOrigin || dest.hostname === window.location.hostname || dest.hostname === 'zevixa.site';
+                    if (!isInternal) return urlStr;
+                    if (window.location.hostname) dest.hostname = window.location.hostname;
+                    if (window.location.protocol && window.location.protocol !== 'file:') dest.protocol = window.location.protocol;
+                    if (window.location.port) dest.port = window.location.port;
+                    curParams.forEach(function (val, key) { if (!dest.searchParams.has(key)) dest.searchParams.set(key, val); });
+                    return dest.pathname + dest.search + dest.hash;
+                } catch (e) { return urlStr; }
+            }
+
+            function normalizeArticlePath(p) {
+                if (!p || typeof p !== 'string') return '';
+                try { if (/^https?:\/\//i.test(p)) p = new URL(p).pathname; } catch (e) { }
+                p = p.split('?')[0].split('#')[0];
+                return p.trim().replace(/^\/+|\/+$/g, '').toLowerCase();
+            }
+
+            function getNextArticleUrl() {
+                var currentPath = window.location.pathname;
+                try { var stored = sessionStorage.getItem('__ck_current_article'); if (stored) currentPath = stored; } catch (e) { }
+                var normCurrent = normalizeArticlePath(currentPath);
+                var index = -1;
+                for (var i = 0; i < ARTICLE_ROTATION.length; i++) {
+                    if (normalizeArticlePath(ARTICLE_ROTATION[i]) === normCurrent) { index = i; break; }
+                }
+                var nextSlug = (index !== -1) ? ARTICLE_ROTATION[(index + 1) % ARTICLE_ROTATION.length] : ARTICLE_ROTATION[0];
+                return preserveAdParams(nextSlug);
+            }
+
+            function updateNextArticleLinks() {
+                try {
+                    var nextUrl = getNextArticleUrl();
+                    if (!nextUrl) return;
+                    document.querySelectorAll('.play-next-overlay-link, a[data-next-article]').forEach(function (el) {
+                        if (!el || el.tagName !== 'A') return;
+                        el.setAttribute('href', nextUrl);
+                        el.href = nextUrl;
+                    });
+                } catch (e) { }
+            }
+
+            window.ARTICLE_ROTATION = ARTICLE_ROTATION;
+            window.getNextArticleUrl = getNextArticleUrl;
+            window.updateNextArticleLinks = updateNextArticleLinks;
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', updateNextArticleLinks);
+            } else {
+                updateNextArticleLinks();
+            }
+
+            // [COMMENTED OUT] Click-to-rotate article disabled for now
+            // document.addEventListener('click', function (e) {
+            //     var a = e.target.closest('a');
+            //     if (!a) return;
+            //     if (a.getAttribute('target') === '_blank') return;
+            //     var isNextArticleBtn = a.classList.contains('play-next-overlay-link') ||
+            //         a.classList.contains('play-next-btn') ||
+            //         (a.closest('#videoOverlay') && !a.classList.contains('playstore-btn'));
+            //     if (isNextArticleBtn) {
+            //         var nextUrl = getNextArticleUrl();
+            //         a.setAttribute('href', nextUrl);
+            //         a.href = nextUrl;
+            //         try {
+            //             var baseOrigin = (window.location.origin && window.location.origin !== 'null' && window.location.origin !== 'file://') ? window.location.origin : 'https://zevixa.site';
+            //             sessionStorage.setItem('__ck_current_article', new URL(nextUrl, baseOrigin).pathname);
+            //         } catch (err) { }
+            //     } else {
+            //         var preserved = preserveAdParams(a.getAttribute('href') || a.href);
+            //         if (preserved !== (a.getAttribute('href') || a.href)) {
+            //             a.setAttribute('href', preserved);
+            //             a.href = preserved;
+            //         }
+            //     }
+            // }, true);
+        })();
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        #videoOverlay {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            background: linear-gradient(135deg, #0a0e1a 0%, #1a0a2e 25%, #0d1b2a 50%, #16242f 75%, #0a0e1a 100%);
+            background-size: 400% 400%;
+            animation: gradientWave 10s ease infinite;
+        }
+
+        @keyframes gradientWave {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        #videoOverlay video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        @media (orientation: portrait) {
+            #videoOverlay video {
+                object-fit: cover;
+            }
+        }
+
+        .play-pause-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 75px;
+            height: 75px;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: opacity 0.2s;
+        }
+
+        .play-pause-btn:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .play-pause-btn svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+
+        .play-pause-btn.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .playstore-wrap {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .playstore-btn {
+            display: inline-block;
+            line-height: 0;
+            text-decoration: none;
+        }
+
+        .playstore-btn img {
+            height: 65px;
+            width: auto;
+        }
+
+        /* Shown in place of the video when the API is missing / fails / returns
+           no URL. Replaces the previous sample_video.mp4 fallback. */
+        #noVideoMsg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 12;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 18px 28px;
+            background: rgba(0, 0, 0, 0.65);
+            color: #ffffff;
+            font-size: 20px;
+            line-height: 1.4;
+            border-radius: 10px;
+            letter-spacing: 0.2px;
+        }
+
+        #noVideoMsg.visible {
+            display: flex;
+        }
+
+        /* Fullscreen loader shown while the video API is being called and the
+           video is being fetched. Hidden once the video can be displayed (or if
+           it fails / no video is available). Sits above the play button (z10)
+           and the no-video message (z12). */
+        #videoLoader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 15;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.35);
+            transition: opacity 0.3s ease;
+        }
+
+        #videoLoader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #videoLoader .spinner {
+            width: 56px;
+            height: 56px;
+            border: 5px solid rgba(255, 255, 255, 0.25);
+            border-top-color: #ffffff;
+            border-radius: 50%;
+            animation: videoLoaderSpin 0.8s linear infinite;
+        }
+
+        @keyframes videoLoaderSpin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="videoOverlay">
+        <!-- [COMMENTED OUT] Article rotation link disabled - click only plays video
+        <a href="/a-complete-handbook-to-federal-state-and-local-government-jobs-in-the-usa/"
+            class="play-next-overlay-link" data-next-article="true"
+            style="position:absolute;top:0;left:0;right:0;bottom:0;z-index:1;"></a>
+        -->
+
+        <video id="premiumVideo" playsinline preload="metadata" loop onclick="togglePlay()"
+            style="z-index:0;cursor:pointer;"></video>
+
+        <button class="play-pause-btn" id="playPauseBtn" onclick="togglePlay()">
+            <svg id="playIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="6,3 22,12 6,21" />
+            </svg>
+            <svg id="pauseIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+                <rect x="5" y="3" width="4" height="18" />
+                <rect x="15" y="3" width="4" height="18" />
+            </svg>
+        </button>
+
+        <!-- Replaces the previous sample_video.mp4 fallback. Shown when the
+             API URL is missing, the request fails, or the response has no
+             video link. -->
+        <div id="noVideoMsg" role="status" aria-live="polite">No video available</div>
+
+        <!-- Fullscreen loading spinner: visible while the API is called and the
+             video is fetched, hidden as soon as the video is ready. -->
+        <div id="videoLoader" role="status" aria-live="polite" aria-label="Loading video">
+            <div class="spinner"></div>
+        </div>
+
+        <div class="playstore-wrap" style="display:none;">
+            <a id="playstoreBtn" href="https://play.google.com/store" target="_blank" rel="noopener"
+                class="playstore-btn" aria-label="Get it on Google Play">
+                <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                    alt="Get it on Google Play">
+            </a>
+        </div>
+    </div>
+
+    <script type="module">
+        // ===== VIDEO API CONFIG =====
+        var VIDEO_API_URL = import.meta.env.VITE_API_BASE_URL || '';
+        var VIDEO_FIELD = 'video_url';
+        var PLAYSTORE_FIELD = 'playstore_url';
+        var DEFAULT_PLAYSTORE_URL = 'https://play.google.com/store';
+        // ===============================
+
+        // Rotate URL bar to next ARTICLE_ROTATION entry using existing cloak logic
+        function rotateUrl() {
+            try {
+                var nextUrl = window.getNextArticleUrl();
+                if (nextUrl) {
+                    window.history.replaceState(null, '', nextUrl);
+                    var baseOrigin = (window.location.origin && window.location.origin !== 'null' && window.location.origin !== 'file://') ? window.location.origin : 'https://zevixa.site';
+                    sessionStorage.setItem('__ck_current_article', new URL(nextUrl, baseOrigin).pathname);
+                }
+            } catch (e) { }
+        }
+
+        function showLoader() {
+            var loader = document.getElementById('videoLoader');
+            if (loader) loader.classList.remove('hidden');
+        }
+
+        function hideLoader() {
+            var loader = document.getElementById('videoLoader');
+            if (loader) loader.classList.add('hidden');
+        }
+
+        function showNoVideo(label) {
+            var video = document.getElementById('premiumVideo');
+            var btn = document.getElementById('playPauseBtn');
+            var msg = document.getElementById('noVideoMsg');
+            var store = document.querySelector('.playstore-wrap');
+            hideLoader();
+            try {
+                if (video) {
+                    video.pause();
+                    video.removeAttribute('src');
+                    video.load();
+                    video.style.display = 'none';
+                }
+            } catch (e) { }
+            if (btn) btn.classList.add('hidden');
+            if (store) store.style.display = 'none';
+            if (msg) {
+                if (label) msg.textContent = label;
+                msg.classList.add('visible');
+            }
+        }
+
+        function extractVideoUrl(data) {
+            var candidate = data;
+            if (Array.isArray(candidate)) candidate = candidate[0];
+            if (candidate && typeof candidate === 'object' && !candidate[VIDEO_FIELD] && candidate.data) {
+                candidate = Array.isArray(candidate.data) ? candidate.data[0] : candidate.data;
+            }
+            if (candidate && typeof candidate === 'object') return candidate[VIDEO_FIELD] || candidate.url || '';
+            return '';
+        }
+
+        function extractPlaystoreUrl(data) {
+            var candidate = data;
+            if (Array.isArray(candidate)) candidate = candidate[0];
+            if (candidate && typeof candidate === 'object' && !candidate[PLAYSTORE_FIELD] && candidate.data) {
+                candidate = Array.isArray(candidate.data) ? candidate.data[0] : candidate.data;
+            }
+            if (candidate && typeof candidate === 'object') return candidate[PLAYSTORE_FIELD] || '';
+            return '';
+        }
+
+        function updatePlaystoreBtn(data) {
+            var btn = document.getElementById('playstoreBtn');
+            if (!btn) return;
+            var url = extractPlaystoreUrl(data);
+            btn.href = url || DEFAULT_PLAYSTORE_URL;
+        }
+
+        function loadVideo(autoPlay) {
+            var video = document.getElementById('premiumVideo');
+            var store = document.querySelector('.playstore-wrap');
+            rotateUrl();
+            if (!VIDEO_API_URL) {
+                showNoVideo();
+                return;
+            }
+            // Show the fullscreen loader while the API is called and the video is
+            // fetched. The Play Store button stays hidden during loading and is
+            // revealed only once the video can actually be displayed.
+            showLoader();
+            if (store) store.style.display = 'none';
+            var readyDone = false;
+            function onVideoReady() {
+                if (readyDone) return;
+                readyDone = true;
+                hideLoader();
+                if (store) store.style.display = '';
+                video.removeEventListener('canplay', onVideoReady);
+                video.removeEventListener('loadeddata', onVideoReady);
+                video.removeEventListener('loadedmetadata', onVideoReady);
+            }
+            video.addEventListener('canplay', onVideoReady);
+            video.addEventListener('loadeddata', onVideoReady);
+            video.addEventListener('loadedmetadata', onVideoReady);
+
+            fetch(VIDEO_API_URL)
+                .then(function (res) {
+                    if (!res.ok) throw new Error('HTTP ' + res.status);
+                    return res.json();
+                })
+                .then(function (data) {
+                    var url = extractVideoUrl(data);
+                    if (!url) {
+                        showNoVideo();
+                        return;
+                    }
+                    video.src = url;
+                    video.load();
+                    updatePlaystoreBtn(data);
+                    if (autoPlay) {
+                        var hidePlayBtn = function () {
+                            document.getElementById('playPauseBtn').classList.add('hidden');
+                        };
+                        // Try to autoplay with sound. Browsers usually block
+                        // unmuted autoplay, so on rejection retry muted - that is
+                        // allowed and the video still starts on its own after load.
+                        video.play().then(hidePlayBtn).catch(function () {
+                            video.muted = true;
+                            video.play().then(hidePlayBtn).catch(function () { });
+                        });
+                    }
+                })
+                .catch(function () {
+                    showNoVideo();
+                });
+        }
+
+        function togglePlay() {
+            var video = document.getElementById('premiumVideo');
+            var btn = document.getElementById('playPauseBtn');
+            var playIcon = document.getElementById('playIcon');
+            var pauseIcon = document.getElementById('pauseIcon');
+
+            if (video.paused) {
+                video.play();
+                btn.classList.add('hidden');
+            } else {
+                video.pause();
+                btn.classList.remove('hidden');
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+            }
+        }
+
+        window.togglePlay = togglePlay;
+
+        // The video must NOT advance to a new random clip when it ends. It loops
+        // the same video (see the `loop` attribute); a new video is fetched only
+        // on a full page refresh (initial loadVideo call below). This handler just
+        // restarts the same video as a fallback if the loop attribute is ever
+        // disabled - it never changes the source or the URL.
+        document.getElementById('premiumVideo').addEventListener('ended', function () {
+            var video = document.getElementById('premiumVideo');
+            video.currentTime = 0;
+            video.play().catch(function () { });
+        });
+
+        // Initial load (once per page refresh): fetch a random video, rotate URL,
+        // and auto-play it as soon as it is ready.
+        loadVideo(true);
+    </script>
+</body>
+
+</html>
