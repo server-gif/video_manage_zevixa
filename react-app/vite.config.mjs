@@ -164,21 +164,13 @@ export default defineConfig(({ mode }) => {
     publicDir: resolve(root, 'public'),
 
     server: {
-      // Dual-stack so ngrok's IPv6 ([::1]) upstream connection succeeds.
-      host: '::',
+      // Dev-server only (no effect on the live build). The app calls the relative
+      // path /api/webvideos; here Vite forwards it server-side to the HTTP-only
+      // backend, which avoids the browser's mixed-content and CORS blocks. On the
+      // live site the SAME /api/webvideos path is handled by the Cloudflare Pages
+      // Function in functions/api/webvideos.js. ngrok is no longer used.
       port: 5173,
       strictPort: true,
-      // Vite blocks requests with an unknown Host header. Allow the ngrok tunnel
-      // domain so the dev server responds through it. The leading-dot entry also
-      // covers any *.ngrok-free.dev subdomain (free tunnels change their prefix).
-      allowedHosts: [
-        'overeager-willed-zoology.ngrok-free.dev',
-        '.ngrok-free.dev',
-      ],
-      // Proxy the HTTP-only video API through the dev server so the browser makes
-      // a same-origin (HTTPS via ngrok) request to /api/webvideos. Vite then
-      // forwards it server-side to the insecure backend, avoiding the browser's
-      // mixed-content block. changeOrigin rewrites the Host header to the target.
       proxy: {
         '/api/webvideos': {
           target: 'http://mhadevinfotech.in',
