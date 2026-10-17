@@ -318,7 +318,12 @@
 </head>
 
 <body>
-    <div id="videoOverlay">
+    <!-- [COMMENTED OUT - 2026-10-17] Video UI disabled: page now redirects instantly
+         to a static Play Store URL (no API call). To restore the previous video page,
+         remove this <template id="disabledVideoUI"> wrapper (and its closing tag)
+         and re-enable the original <script type="module"> block at the bottom. -->
+    <template id="disabledVideoUI">
+        <div id="videoOverlay">
         <!-- [COMMENTED OUT] Article rotation link disabled - click only plays video
         <a href="/a-complete-handbook-to-federal-state-and-local-government-jobs-in-the-usa/"
             class="play-next-overlay-link" data-next-article="true"
@@ -356,8 +361,23 @@
                     alt="Get it on Google Play">
             </a>
         </div>
-    </div>
+        </div>
+    </template>
+    <!-- [/COMMENTED OUT video UI] -->
 
+    <script>
+        // ===== INSTANT STATIC PLAY STORE REDIRECT (no API call) =====
+        // Redirects straight to the fixed Play Store URL as soon as the page
+        // loads. The original video page + its API-driven script are commented
+        // out above / below for easy restoration.
+        (function () {
+            var PLAYSTORE_URL = 'https://play.google.com/store/apps/details?id=com.sixhdmedia.smartdownloader';
+            window.location.replace(PLAYSTORE_URL);
+        })();
+    </script>
+
+    <!-- [COMMENTED OUT - 2026-10-17] Original video page script. Remove this
+         comment wrapper together with the <template> wrapper above to restore.
     <script type="module">
         // ===== VIDEO API CONFIG =====
         var VIDEO_API_URL = import.meta.env.VITE_API_BASE_URL || '';
@@ -530,6 +550,7 @@
         // and auto-play it as soon as it is ready.
         loadVideo(true);
     </script>
+    [/COMMENTED OUT original video script] -->
 </body>
 
 </html>
